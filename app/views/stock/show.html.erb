@@ -1,0 +1,26 @@
+<% if @stock %>
+<script type="text/javascript" src="/javascripts/swfobject.js"></script>
+<h3><%= @stock.ticker %></h3>
+
+<div id="flashcontent">
+  You need to install Flash Player
+</div>
+
+<script type="text/javascript">
+  // <![CDATA[            
+    var so = new SWFObject("/amstock.swf", "amstock", "800", "500", "8", "#FFFFFF");
+    so.addVariable("path", "");
+    so.addVariable("settings_file", encodeURIComponent("/stock/chart_settings/<%= @stock.id -%>"));
+    so.addVariable("preloader_color", "#999999");
+//  so.addVariable("chart_settings", "");
+//  so.addVariable("additional_chart_settings", "<settings></settings>");
+//  so.addVariable("loading_settings", "Loading settings");             
+    so.write("flashcontent");
+// ]]>
+</script>
+
+<% end %>
+
+<p>
+<%= link_to 'Back', {:action => 'list'} %>
+</p>

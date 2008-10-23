@@ -1,0 +1,5 @@
+<%- if @quotes.length > 0 -%>
+<%- @quotes.each do |quote| -%>
+<%= quote.date -%>,<%= quote.open -%>,<%= quote.high -%>,<%= quote.low -%>,<%= quote.close %>,<%= quote.volume %>
+<%- end -%>
+<%- end -%>

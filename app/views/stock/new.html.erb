@@ -1,0 +1,9 @@
+<h3>Add new stock</h3>
+
+<% form_tag :action => 'create' do %>
+<p><label for="stock_ticker">Ticker</label>: <%= text_field 'stock', 'ticker' %></p>
+<p><label for="days">Days</label>: <input type="text" name="days" value=""></p>
+<%= submit_tag "Add stock" %>
+<% end %>
+
+<%= link_to 'Back', {:action => 'list'} %>

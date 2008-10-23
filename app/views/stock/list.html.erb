@@ -1,0 +1,25 @@
+<% if @stocks.blank? %>
+<p>No stocks imported yet</p>
+<% else %>
+<table>
+  <% @stocks.each do |s| %>
+  <tr>
+    <td><%= link_to s.ticker, {:action => 'show',   :id => s.id} -%></td>
+	<td>(<%= s.quotes.find(:first, :order => 'date DESC').close %>)</td>
+    <% if logged_in? %>
+    <td><%= link_to "EMA",    {:action => 'ema',    :id => s.id, :days => 5} -%></td>
+    <td><%= link_to "MACD",   {:action => 'macd',   :id => s.id} -%></td>
+    <td><%= link_to "RSI",    {:action => 'rsi',    :id => s.id} -%></td>
+    <td><%= link_to "Import", {:action => 'import', :id => s.id} -%></td>
+    <td><%= link_to "Delete", {:action => 'delete', :id => s.id} -%></td>
+    <td><%= link_to "Update", {:action => 'update', :id => s.id} -%></td>
+	<% end %>
+    <td><%# if s.quotes.length > 0 %><%# s.quotes.find(:first, :order => 'date DESC').date %> <%# Date.today.to_s %><%# end %></td>
+  <tr>
+  <% end %>
+</table>
+<% end %>
+
+<% if logged_in? %>
+<p><%= link_to "Add stock", {:action => 'new'} -%></p>
+<% end %>

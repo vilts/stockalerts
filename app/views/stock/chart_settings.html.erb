@@ -1,0 +1,559 @@
+<settings>
+  <margins>15</margins>                                                   
+  <font></font>                                                         
+  <text_size></text_size>                                               
+  <text_color></text_color>
+  <redraw></redraw>     
+  <add_time_stamp></add_time_stamp>                                                
+  <max_series></max_series>
+  <max_grid_count></max_grid_count>  
+  <equal_spacing></equal_spacing>
+  <start_on_axis>false</start_on_axis>    
+  <js_enabled></js_enabled>
+  
+  <data_reloading>
+    <interval></interval> 
+    <show_preloader></show_preloader>
+    <reset_period></reset_period>
+  </data_reloading>  
+
+  <number_format>  
+	  <decimal_separator></decimal_separator>
+	  <thousand_separator></thousand_separator>
+
+	  <digits_after_decimal>
+	     <percents></percents>
+	     <data></data>
+       <averages></averages>       
+    </digits_after_decimal>
+
+    <letters>
+       <letter number="1000">K</letter>
+       <letter number="1000000">M</letter>
+       <letter number="1000000000">B</letter>
+    </letters>      
+  </number_format>
+
+  <data_sets> 
+    <data_set>
+       <title><%= @stock.ticker %></title>
+       <short><%= @stock.ticker %> </short>
+       <color></color>
+       <description><![CDATA[]]></description> 
+       <file_name>/stock/chart_data/<%= @stock.id -%></file_name>
+       <events_file_name></events_file_name>
+       <main_drop_down selected="true"></main_drop_down> 	    	  
+       <compare_list_box selected="false"></compare_list_box>
+        
+       <csv>
+         <reverse>true</reverse>
+         <separator>,</separator>
+         <skip_first_rows></skip_first_rows>
+         <skip_last_rows></skip_last_rows>
+         <show_last_rows></show_last_rows>
+         <date_format>YYYY-MM-DD</date_format>
+         <decimal_separator>.</decimal_separator>
+         
+         <columns>
+           <column>date</column>
+           <column>open</column>
+           <column>high</column>
+           <column>low</column>
+           <column>close</column>
+           <column>volume</column>
+         </columns>
+
+         <data></data>         
+       </csv>
+    </data_set>
+  </data_sets>
+
+  <charts>
+  	<chart>
+  		<height>60</height>
+  		<title>Price</title>
+  		<bg_color></bg_color>
+  		<bg_alpha></bg_alpha>
+        <border_color>#CCCCCC</border_color>
+        <border_alpha>100</border_alpha>
+     
+      <grid>
+        <x>
+          <enabled></enabled>
+          <color></color>
+          <alpha></alpha>
+          <dashed></dashed>    
+          <dash_length></dash_length>
+        </x>
+        
+        <y_left>
+          <enabled></enabled>
+          <color></color>
+          <alpha></alpha>
+          <dashed></dashed>
+          <dash_length></dash_length>
+          <approx_count></approx_count>
+          <fill_color></fill_color>
+          <fill_alpha></fill_alpha>
+        </y_left>
+
+        <y_right>
+          <enabled></enabled>
+          <color></color>
+          <alpha></alpha>
+          <dashed></dashed>    
+          <dash_length></dash_length>  
+          <approx_count></approx_count>
+          <fill_color></fill_color>
+          <fill_alpha></fill_alpha>    
+        </y_right>    
+      </grid>	
+
+      <values>
+        <x>
+          <enabled></enabled>
+          <text_color></text_color>
+          <text_size></text_size>
+          <bg_color></bg_color>
+          <bg_alpha></bg_alpha>
+        </x>
+        
+        <y_left>
+          <enabled></enabled>
+          <min></min>
+          <max></max>
+          <integers_only></integers_only>
+          <text_color></text_color>
+          <text_size></text_size>
+        </y_left>
+        
+        <y_right>        
+          <enabled></enabled>
+          <min></min>
+          <max></max>
+          <integers_only></integers_only>
+          <text_color></text_color>
+          <text_size></text_size>      
+        </y_right>
+      </values>
+     
+      <legend>
+        <enabled></enabled>
+        <text_size></text_size>
+        <text_color></text_color>
+        <value_color></value_color>
+        <positive_color></positive_color>
+        <negative_color></negative_color>        
+        <show_date>true</show_date>
+        <key_size></key_size>
+        <key_type></key_type>
+      </legend>
+
+      <comparing>
+        <recalculate></recalculate>
+        <recalculate_from_start></recalculate_from_start>
+        <width></width>
+        <dashed></dashed>
+        <use_graph_color></use_graph_color>
+        <alpha></alpha>
+        <smoothed></smoothed>
+      </comparing>
+      
+      <events>
+        <show_balloon></show_balloon>
+        <use_hand_cursor>true</use_hand_cursor>
+        <url_target></url_target>
+        <bullet></bullet>
+        <color></color>
+        <color_hover></color_hover>        
+        <border_color></border_color>
+        <text_color></text_color>
+        <size></size>
+        <hide_period></hide_period>
+      </events>      
+       	
+      <column_width></column_width>
+  		<graphs>
+  			<graph>
+  			  <axis></axis>
+  				<type>ohlc</type>
+  				<data_sources>
+                  <open>open</open>
+                  <high>high</high>
+                  <low>low</low>
+  				  <close>close</close>
+          </data_sources>
+
+          <period_value></period_value>
+          <compare_source>close</compare_source>
+          <title></title>
+  				<color></color>
+  				<cursor_color></cursor_color>
+  				<cursor_alpha></cursor_alpha>  				
+  				<positive_color></positive_color>
+          <negative_color></negative_color>
+  				<width></width>
+  				<alpha></alpha>
+  				<fill_alpha></fill_alpha>
+          <dashed></dashed>  				
+  				<bullet></bullet>
+  				<bullet_size></bullet_size>
+          <smoothed></smoothed>  				
+
+  		    <legend>
+            <date key="false" title="false"><![CDATA[open:<b>{open}</b> high:<b>{high}</b> low:<b>{low}</b> close:<b>{close}</b>]]></date>
+            <period key="false" title="false"><![CDATA[high <b>{high}</b> low: <b>{low}</b>]]></period>
+            <date_comparing key="false" title="false"><![CDATA[]]></date_comparing>
+            <period_comparing key="false" title="false"><![CDATA[]]></period_comparing>
+          </legend>
+  			</graph>  			
+  		</graphs>
+  	</chart>  
+
+  	<chart>
+  		<height>30</height>
+  		<title>Volume</title>  		
+  		<bg_color></bg_color>
+  		<bg_alpha></bg_alpha>
+      <border_color>#CCCCCC</border_color>
+      <border_alpha>100</border_alpha>
+      <grid>
+        <x>
+          <enabled></enabled>
+          <color></color>
+          <alpha></alpha>
+          <dashed></dashed>    
+          <dash_length></dash_length>
+        </x>
+        
+        <y_left>
+          <enabled></enabled>
+          <color></color>
+          <alpha></alpha>
+          <dashed></dashed>
+          <dash_length></dash_length>
+          <approx_count>3</approx_count>
+        </y_left>
+
+        <y_right>
+          <enabled></enabled>
+          <color></color>
+          <alpha></alpha>
+          <dashed></dashed>    
+          <dash_length></dash_length>  
+          <approx_count></approx_count>    
+        </y_right>    
+      </grid>	
+
+      <values>
+        <x>
+          <enabled></enabled>
+          <text_color></text_color>
+          <text_size></text_size>
+          <bg_color></bg_color>
+          <bg_alpha></bg_alpha>
+        </x>
+        
+        <y_left>
+          <enabled></enabled>
+          <min></min>
+          <max></max>
+          <integers_only></integers_only>
+          <text_color></text_color>
+          <text_size></text_size>
+        </y_left>
+        
+        <y_right>        
+          <enabled></enabled>
+          <min></min>
+          <max></max>
+          <integers_only></integers_only>
+          <text_color></text_color>
+          <text_size></text_size>      
+        </y_right>
+      </values>
+
+      <legend>
+        <enabled></enabled>
+        <text_size></text_size>
+        <text_color></text_color>
+        <value_color></value_color>
+        <positive_color></positive_color>
+        <negative_color></negative_color>        
+        <show_date>false</show_date>
+        <key_size></key_size>
+        <key_type></key_type>
+      </legend>
+
+      <comparing>
+        <recalculate></recalculate>
+        <width></width>
+        <alpha></alpha>
+      </comparing>
+       	
+      <column_width>0</column_width>
+  		<graphs>
+  			<graph>
+  			  <axis></axis>
+  				<type>column</type>
+  				<data_sources>
+  				  <close>volume</close>
+          </data_sources>
+          
+          <period_value>average</period_value>
+          <compare_source></compare_source>
+          <title></title>
+  				<color></color>
+  				<cursor_color></cursor_color>
+  				<positive_color></positive_color>
+          <negative_color></negative_color>
+  				<width></width>
+  				<alpha></alpha>
+  				<fill_alpha>50</fill_alpha>
+  				<bullet></bullet>
+  				<bullet_size></bullet_size>
+  		    <legend>
+            <date key="false" title="false"><![CDATA[{average}]]></date>
+            <period key="false" title="false"><![CDATA[open:<b>{open}</b> low:<b>{low}</b> high:<b>{high}</b> close:<b>{close}</b>]]></period>
+            <date_comparing key="false" title="false"><![CDATA[]]></date_comparing>
+            <period_comparing key="false" title="false"><![CDATA[]]></period_comparing>
+          </legend>         
+  			</graph>  			
+  		</graphs>
+  	</chart>    
+  </charts>
+  
+  <date_formats>        
+     <x_axis>     
+       <seconds></seconds>
+       <minutes></minutes>
+       <hours></hours>
+       <days></days>
+       <months></months>
+       <years></years>
+     </x_axis>
+     <legend>
+       <seconds></seconds>
+       <minutes></minutes>
+       <hours></hours>
+       <days>month DD, YYYY</days>
+       <weeks></weeks>
+       <months></months>
+       <years></years>
+     </legend>
+  </date_formats>  
+
+  <data_set_selector>
+    <enabled>false</enabled>
+    <position></position>
+    <width></width>
+    <text_size></text_size>
+    <text_color></text_color>
+    <max_comparing_count></max_comparing_count>
+ 		<main_drop_down_title></main_drop_down_title> 		
+ 		<compare_list_box_title>Compare to:</compare_list_box_title>    
+    <drop_down>      
+      <bg_color></bg_color>
+      <bg_color_selected></bg_color_selected>
+      <bg_color_hover></bg_color_hover>
+      <text_size></text_size>
+      <text_color></text_color>
+      <text_color_selected></text_color_selected>
+      <border_color></border_color>
+      <border_width></border_width>
+      <scroller_color></scroller_color>
+      <scroller_bg_color></scroller_bg_color>
+      <arrow_color></arrow_color>
+      <corner_radius></corner_radius>
+    </drop_down>
+  </data_set_selector>
+  
+  
+  <period_selector>
+    <enabled></enabled>
+    <custom_period_enabled></custom_period_enabled>    
+    <position>bottom</position>
+    <text_size></text_size>
+    <text_color></text_color>   
+    
+    <button>
+      <bg_color></bg_color>
+      <bg_color_hover></bg_color_hover>
+      <bg_color_selected></bg_color_selected>
+	    <text_size></text_size>
+      <text_color></text_color>
+      <text_color_hover></text_color_hover>
+      <text_color_selected></text_color_selected>
+      <border_color></border_color>
+      <border_color_hover></border_color_hover>
+      <border_color_selected></border_color_selected>
+      <border_width></border_width>
+      <corner_radius></corner_radius>     
+    </button>
+  
+    <input>
+      <bg_color></bg_color>
+      <text_size></text_size>
+      <text_color></text_color>
+      <border_color></border_color>
+	    <border_width></border_width>
+      <corner_radius></corner_radius>
+    </input>
+  	
+    <periods>		
+      <period type="DD" count="10">10D</period>
+    	<period type="MM" count="1">1M</period>
+    	<period type="MM" count="3">3M</period>
+    	<period type="YYYY" count="1">1Y</period>
+    	<period type="YYYY" count="3">3Y</period>
+    	<period selected="true" type="YTD" count="0">YTD</period>
+    	<period type="MAX">MAX</period>
+	</periods>
+
+		<zoom_to_end></zoom_to_end>
+		<periods_title>Zoom:</periods_title>
+		<custom_period_title>Custom period:</custom_period_title>
+  
+  </period_selector>
+  
+  <header>
+    <enabled>false</enabled>
+    <text><![CDATA[<b>{title}</b> ({short}) {description}]]></text>
+    <margins></margins>
+    <text_size>13</text_size>
+    <text_color></text_color>
+    <bg_color></bg_color>
+    <bg_alpha></bg_alpha>
+    <border_alpha></border_alpha>
+    <border_color></border_color>
+    <border_width></border_width>
+    <corner_radius></corner_radius>
+  </header>
+
+  <balloon>
+    <bg_color></bg_color>
+    <bg_alpha></bg_alpha>
+    <text_color></text_color>
+    <text_size></text_size>
+    <border_color></border_color>
+    <border_width></border_width>
+    <border_alpha></border_alpha>
+    <corner_radius></corner_radius>  
+  </balloon>
+
+
+  <background>    
+    <color></color>
+    <alpha></alpha>      
+    <border_color></border_color>
+    <border_alpha></border_alpha>
+  </background>    
+
+  <plot_area>
+    <margins></margins>
+    <bg_color></bg_color>
+    <bg_alpha></bg_alpha>
+    <border_alpha></border_alpha>
+    <border_color></border_color>
+    <border_width></border_width>
+    <corner_radius></corner_radius>
+  </plot_area>
+
+  <scroller>
+    <enabled>true</enabled>
+    <height></height>    
+    <graph_data_source>close</graph_data_source>
+    <bg_color></bg_color>
+    <bg_alpha></bg_alpha>
+    <selected_color></selected_color>
+    <graph_color></graph_color>
+    <graph_alpha></graph_alpha>
+    <graph_width></graph_width>
+    <graph_fill_alpha></graph_fill_alpha>
+    <graph_selected_color></graph_selected_color>
+    <graph_selected_alpha></graph_selected_alpha>
+    <graph_selected_fill_alpha></graph_selected_fill_alpha>
+    <graph_selected_fill_color></graph_selected_fill_color> 
+    <resize_button_style></resize_button_style>    
+    <resize_button_color></resize_button_color>
+    <resize_pointer_color></resize_pointer_color>    
+    
+    <grid>
+      <enabled></enabled>
+      <max_count></max_count>
+      <color></color>
+      <alpha></alpha>
+      <dashed></dashed>
+      <dash_lenght></dash_lenght>
+    </grid>
+    <values>
+      <enabled></enabled>
+      <text_color></text_color>
+      <text_size></text_size>
+    </values>
+    
+    <playback>
+      <enabled></enabled>
+      <color></color>
+      <color_hover></color_hover>
+      <speed>1</speed>
+      <max_speed></max_speed>
+      <loop></loop>
+      <speed_indicator>
+        <enabled></enabled>
+        <color></color>
+        <bg_color></bg_color>
+      </speed_indicator>
+    </playback>
+  </scroller>
+
+  <context_menu>                                                                  
+     <default_items>
+       <zoom>false</zoom>
+       <print>false</print>                                  
+     </default_items>
+  </context_menu>  
+  
+  <export_as_image>
+    <file>amstock/export.php</file>
+    <target></target>    
+    <color></color>                                           
+    <alpha></alpha>                                           
+    <text_color></text_color>                                 
+    <text_size></text_size>                                   
+  </export_as_image>  
+
+  <strings>    
+    <processing_data></processing_data>
+    <loading_data></loading_data>    
+    <wrong_date_format></wrong_date_format>      
+    <export_as_image></export_as_image>
+    <collecting_data></collecting_data>
+    <no_data></no_data>        
+    
+ 	  <months>
+    	<month>Jan</month>
+    	<month>Feb</month>
+    	<month>Mar</month>
+    	<month>Apr</month>
+    	<month>May</month>
+    	<month>Jun</month>
+    	<month>Jul</month>
+    	<month>Aug</month>
+    	<month>Sep</month>
+    	<month>Oct</month>
+    	<month>Nov</month>
+    	<month>Dec</month>    
+  	</months>
+  	
+  	<weekdays>
+  	   <day>Sun</day>
+  	   <day>Mon</day>
+  	   <day>Tue</day>
+  	   <day>Wed</day>
+  	   <day>Thu</day>
+  	   <day>Fri</day>
+  	   <day>Sat</day>
+  	</weekdays>
+  </strings>
+</settings>
