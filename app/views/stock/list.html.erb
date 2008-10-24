@@ -1,6 +1,7 @@
 <% if @stocks.blank? %>
 <p>No stocks imported yet</p>
 <% else %>
+<%= link_to "Update All", {:action => 'update_all'} -%>
 <table>
   <% @stocks.each do |s| %>
   <tr>
@@ -12,7 +13,6 @@
     <td><%= link_to "RSI",    {:action => 'rsi',    :id => s.id} -%></td>
     <td><%= link_to "Import", {:action => 'import', :id => s.id} -%></td>
     <td><%= link_to "Delete", {:action => 'delete', :id => s.id} -%></td>
-    <td><%= link_to "Update", {:action => 'update', :id => s.id} -%></td>
 	<% end %>
     <td><%# if s.quotes.length > 0 %><%# s.quotes.find(:first, :order => 'date DESC').date %> <%# Date.today.to_s %><%# end %></td>
   <tr>

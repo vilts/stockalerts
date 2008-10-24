@@ -66,7 +66,7 @@ class Finance
     quotes.each_with_index do |quote, index|
       if index > calc_days
         curr_gain = (quote > quotes[index - 1] ? quote - quotes[index - 1] : 0)
-        curr_loss = (quote < quotes[index - 1] ? quotes[index - 1] - quote: 0)
+        curr_loss = (quote < quotes[index - 1] ? quotes[index - 1] - quote : 0)
         avg_gain = ((prev_gain * (period - 1)) + curr_gain) / period
         avg_loss = ((prev_loss * (period - 1)) + curr_loss) / period
 
@@ -80,14 +80,14 @@ class Finance
         prev_gain = avg_gain
         prev_loss = avg_loss
 
-        rsi_results[index] = rsi
+        rsi_results[index] = sprintf("%.02f", rsi)
       elsif (index == calc_days)
-        rsi_results[index] = first_rsi
+        rsi_results[index] = sprintf("%.02f", first_rsi)
       else
         rsi_results[index] = 0
       end
-      rsi_results
     end
+    rsi_results
   end
 
 end

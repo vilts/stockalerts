@@ -56,12 +56,13 @@ class StockController < ApplicationController
 
   def create
     @stock = Stock.new(params[:stock])
-    days = params[:days]
+    days = params[:days].to_i
     if @stock.save
       if !days or days.to_i <= 0
         days = @@default_days
       end
-      redirect_to :action => 'import', :id => @stock.id.to_s, :days => days
+      import(@stock.id, days)
+      redirect_to :action => 'list'
     else
       render :action => 'new'
     end
@@ -76,44 +77,19 @@ class StockController < ApplicationController
     redirect_to :action => 'list'
   end
 
-  def import
-    @stock = Stock.find(params[:id])
-    days = params[:days].to_i
-    if !days or days <= 0
-      days = @@default_days
-    end
-    
-    day_counter = 0
-    YahooFinance::get_HistoricalQuotes_days(@stock['ticker'], days) do |hq|
-      q = Quote.new
-      q.date = Date.parse(hq.date)
-      q.stock_id = params[:id]
-      q.open = hq.open
-      q.high = hq.high
-      q.low  = hq.low
-      q.close = hq.close
-      q.volume = hq.volume
-      q.adj_close = hq.adjClose
-      q.save
-      day_counter += 1
-    end
-    flash[:message] = "Imported #{day_counter} days of #{@stock.ticker}."
-    redirect_to :action => 'list'
-  end
-
   # add new quotes since last import
-  def update
-    @stock = Stock.find(params[:id])
-    p @stock
-    quote = @stock.quotes.find(:first, :order => 'date DESC')
-    days = Date.today - quote.date - 1
-    puts "LAST DATE: #{quote.date}"
-    puts "DAYS: #{days}"
-    if days >= 1
-      redirect_to :action => 'import', :id => params[:id], :days => days
-      return
+  def update_all
+    Stock.all.each do |stock|
+      quote = stock.quotes.find(:first, :order => 'date DESC')
+      days = Date.today - quote.date - 1
+      puts "STOCK: #{stock.ticker}"
+      puts "LAST DATE: #{quote.date}"
+      puts "DAYS: #{days}"
+      puts
+      if days >= 1
+        import(stock.id, days)
+      end
     end
-    flash[:message] = "#{@stock.ticker} is already up to date."
     redirect_to :action => 'list'
   end
 
@@ -122,6 +98,7 @@ class StockController < ApplicationController
     days = params[:days].to_i
     quotes = Stock.find(params[:id]).quotes.all(:order => 'date DESC', :limit => days + 10).reverse.map {|q| q.adj_close}
     emas = finance.ema(quotes, days)
+    p emas
     redirect_to :action => 'list'
   end
 
@@ -137,6 +114,34 @@ class StockController < ApplicationController
     quotes = Stock.find(params[:id]).quotes.all(:order => 'date DESC', :limit => 300).reverse.map {|q| q.adj_close}
     rsi = finance.rsi(quotes)
     redirect_to :action => 'list'    
+  end
+
+
+  #
+  # Private functions
+  # 
+  
+  private
+  
+  # Import last x days of stock data from Y! Finance
+  def import(stock_id, days)
+    @stock = Stock.find(stock_id)
+    
+    day_counter = 0
+    YahooFinance::get_HistoricalQuotes_days(@stock.ticker, days) do |hq|
+      q = Quote.new
+      q.date = Date.parse(hq.date)
+      q.stock_id = stock_id
+      q.open = hq.open
+      q.high = hq.high
+      q.low  = hq.low
+      q.close = hq.close
+      q.volume = hq.volume
+      q.adj_close = hq.adjClose
+      q.save
+      day_counter += 1
+    end
+    return day_counter
   end
 
 end
